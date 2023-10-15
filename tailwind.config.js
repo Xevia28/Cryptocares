@@ -12,7 +12,43 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans'],
+      },
+      fontWeight: {
+        thin: 100,
+        light: 300,
+        normal: 400,
+        medium: 500,
+        semibold: 600,
+        bold: 700,
+        extrabold: 800,
+        black: 900,
+      },
+      colors: {
+        dark: '#000',
+        lightGreenish: '#439898',
+        darkGreenish: '#237B7C',
+        veryDarkGreenish: '#02292A',
+        whitish: '#F5F5DC',
+        orangeish: '#F1AB86',
+        inpBg: 'rgba(217, 217, 217, 0.1)',
+      },
+      height: {
+        bgHeight: "82vh",
+        vectorHeight: "60vh",
+        custom: "90vh"
+      },
+      width: {
+        header: "50rem",
+        subheader: "40rem",
+        miniheader: "30rem",
+      },
+      dropShadow: {
+        custom: "0px 0px 20px #439898"
+      }
+
     },
   },
   plugins: [],
-}
+};
