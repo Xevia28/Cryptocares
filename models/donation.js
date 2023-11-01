@@ -11,6 +11,14 @@ const donationSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    // donor: {
+    //     type: String,
+    //     required: [true, "Please provide sender's wallet address!"],
+    // },
+    // project: {
+    //     type: String,
+    //     required: [true, "Please provide project's wallet address!"],
+    // },
     donor: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

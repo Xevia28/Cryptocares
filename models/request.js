@@ -7,8 +7,8 @@ const requestSchema = new mongoose.Schema({
         required: true,
         validate: {
             validator: async function (v) {
-                const project = await mongoose.model('Service').findById(v);
-                return project !== null;
+                const service = await mongoose.model('Service').findById(v);
+                return service !== null;
             },
             message: props => `${props.value} is not a valid service ID`
         }
@@ -27,13 +27,29 @@ const requestSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['pending', 'approved', 'rejected'],
+        enum: ['pending', 'approved', 'rejected', 'completed'],
         default: 'pending'
     },
     amount: {
         type: Number,
         required: [true, "Please provide the amount incurred for the service"]
-    }
+    },
+    location: {
+        type: String,
+        required: [true, "Please provide the location for the service request"]
+    },
+    escrow: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Escrow',
+        required: true,
+        validate: {
+            validator: async function (v) {
+                const escrow = await mongoose.model('Escrow').findById(v);
+                return escrow !== null;
+            },
+            message: props => `${props.value} is not a valid escrow ID`
+        }
+    },
 });
 
 const Request = mongoose.models.Request || mongoose.model('Request', requestSchema);

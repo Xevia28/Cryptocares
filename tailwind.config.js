@@ -33,6 +33,12 @@ module.exports = {
         whitish: '#F5F5DC',
         orangeish: '#F1AB86',
         inpBg: 'rgba(217, 217, 217, 0.1)',
+        bgDark: 'rgba(18, 1, 1, 0.5)',
+        active: '#043b44',
+        footercolor: "#011317",
+        adminsideNavColor: "#333132",
+        adminCardColor: "#D4AC6F",
+        transSideNavColor: "#333132"
       },
       height: {
         bgHeight: "82vh",
@@ -46,8 +52,7 @@ module.exports = {
       },
       dropShadow: {
         custom: "0px 0px 20px #439898"
-      }
-
+      },
     },
   },
   plugins: [],

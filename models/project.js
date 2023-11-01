@@ -13,7 +13,12 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide a wallet address!"],
         unique: true,
-        lowercase: true,
+        // lowercase: true,
+    },
+    seed: {
+        type: String,
+        required: [true, "Please provide your seed value!"],
+        unique: true,
     },
     targetAmount: {
         type: Number,
@@ -33,7 +38,7 @@ const projectSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ["pending", "approved", "rejected", "completed"],
+        enum: ["pending", "approved", "completed"],
         default: "pending"
     },
     start_date: {
@@ -57,17 +62,36 @@ const projectSchema = new mongoose.Schema({
         }
     },
     // donors: an array of references to the users who have donated to the project
-    donors: [{
+    // donors: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     validate: {
+    //         validator: async function (v) {
+    //             const project = await mongoose.model('User').findById(v);
+    //             return project !== null;
+    //         },
+    //         message: props => `${props.value} is not a valid user ID`
+    //     }
+    // }],
+    // serviceRequests: an array of ServiceRequest objects that the user has made or received
+    serviceRequests: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Request',
         validate: {
             validator: async function (v) {
-                const project = await mongoose.model('User').findById(v);
-                return project !== null;
+                const request = await mongoose.model('Request').findById(v);
+                return request !== null;
             },
-            message: props => `${props.value} is not a valid user ID`
+            message: props => `${props.value} is not a valid request ID`
         }
     }]
+});
+
+projectSchema.pre("save", function (next) {
+    if (this.amountRaised >= this.targetAmount) {
+        this.status = "completed";
+    }
+    next();
 });
 
 const Project = mongoose.models.Project || mongoose.model("Project", projectSchema);

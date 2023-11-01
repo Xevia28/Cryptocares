@@ -4,12 +4,10 @@ const escrowSchema = new mongoose.Schema({
     account: {
         type: String,
         required: [true, "Provide who created the escrow!"],
-        lowercase: true
     },
     destination: {
         type: String,
         required: [true, "Provide with who this was created!"],
-        lowercase: true
     },
     amount: {
         type: Number,
@@ -18,20 +16,29 @@ const escrowSchema = new mongoose.Schema({
     sequence: {
         type: String,
         required: [true, "Give the sequence number"],
-        unique: true,
-    },
-    transactionType: {
-        type: String,
-        enum: ["EscrowCreate", "EscrowFinish"],
-        required: true
     },
     condition: {
         type: String,
-        required: [true, "Provide the condition"]
+        required: [true, "Provide the condition"],
+        unique: true
     },
     fulfillment: {
         type: String,
+        required: [true, "Provide the fulfillment"],
         unique: true
+    },
+    cancelAfter: {
+        type: Number,
+        required: [true, "Please provide the cancel date"]
+    },
+    status: {
+        type: String,
+        enum: ["pending", "active", "cancelled", "finished"],
+        default: "pending"
+    },
+    escrowTx: {
+        type: Object,
+        required: [true, "Provide the escrowTx!"]
     }
 });
 

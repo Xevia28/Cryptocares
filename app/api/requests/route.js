@@ -1,13 +1,13 @@
 import connectMongoDB from "@/libs/mongodb";
 import Request from "@/models/request";
 import { NextResponse } from "next/server";
+await connectMongoDB();
 
 export async function POST(request) {
     try {
-        const { service, project, amount } = await request.json();
-        connectMongoDB();
-        await Request.create({ service, project, amount });
-        return NextResponse.json({ message: "Request Created" }, { status: 201 })
+        const { service, project, amount, location, escrow } = await request.json();
+        const req = await Request.create({ service, project, amount, location, escrow });
+        return NextResponse.json({ message: "Request Created", id: req._id }, { status: 200 })
     } catch (error) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
@@ -15,9 +15,8 @@ export async function POST(request) {
 
 export async function GET() {
     try {
-        connectMongoDB();
         const requests = await Request.find();
-        return NextResponse.json({ requests }, { status: 201 });
+        return NextResponse.json({ requests }, { status: 200 });
     } catch (error) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }

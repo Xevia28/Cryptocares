@@ -61,18 +61,6 @@ const userSchema = new mongoose.Schema({
             },
             message: props => `${props.value} is not a valid service ID`
         }
-    }],
-    // serviceRequests: an array of ServiceRequest objects that the user has made or received
-    serviceRequests: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Request',
-        validate: {
-            validator: async function (v) {
-                const request = await mongoose.model('Request').findById(v);
-                return request !== null;
-            },
-            message: props => `${props.value} is not a valid request ID`
-        }
     }]
 })
 
@@ -96,6 +84,7 @@ userSchema.pre("findOneAndUpdate", async function (next) {
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
     return await bcrypt.compare(candidatePassword, userPassword)
 }
-
+userSchema.index({ email: 1 });
+userSchema.index({ wallet_addr: 1 });
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 export default User;
