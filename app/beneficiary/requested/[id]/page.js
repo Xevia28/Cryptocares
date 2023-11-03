@@ -1,3 +1,6 @@
+// This page displays the details of the request made by the beneficiary and the beneficiary can confirm the XRP payment for the service 
+// (if that request was approved and if they got the service requested) they requested in this page
+
 "use client"
 import axios from "axios";
 import Image from "next/image";
@@ -7,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 const xrpl = require("xrpl");
 
+// customized options to style the toast
 const toastOption = {
     position: "top-right",
     autoClose: 8000,
@@ -82,7 +86,7 @@ const ReqDetailsPage = ({ params }) => {
             const signed = projectWallet.sign(prepared)
             const tx = await client.submitAndWait(signed.tx_blob)
             console.log(tx)
-            if (tx.result.meta.TransactionResult === "tesSUCCESS") {
+            if (tx.result.meta.TransactionResult === "tesSUCCESS") { // if the xrpl transaction was successful
                 const txRes = await axios.post("/api/transactions", { transaction_hash: tx.result.hash, amount, from: projectWallet.classicAddress, to: request.service })
                 const requpdateRes = await axios.put(`/api/requests/${reqID}`, { status: "completed" });
                 const escrowUpdateRes = await axios.put(`/api/escrows/${request.escrow}`, { status: "finished" });

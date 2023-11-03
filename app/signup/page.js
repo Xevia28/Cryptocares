@@ -1,3 +1,5 @@
+// Signup page for donors
+
 "use client"
 import Header from "@/components/indexNav";
 import Image from "next/image";
@@ -9,6 +11,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+// customized options to style the toast
 const toastOption = {
   position: "top-right",
   autoClose: 8000,
@@ -66,7 +69,6 @@ const SignUp = () => {
       hasSpecialChar
     );
   }
-
 
   async function handleSignUp() {
     if (!name || !email || !wallet_addr || !password || !passwordConfirm) {

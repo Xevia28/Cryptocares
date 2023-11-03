@@ -1,3 +1,5 @@
+// This is the page that shows when the user tries to access a restricted route
+
 const Restricted = () => {
     return (
         <>

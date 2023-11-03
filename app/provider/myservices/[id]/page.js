@@ -1,3 +1,5 @@
+// This page displays the details of the service of the provider selected
+
 "use client"
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -12,9 +14,9 @@ const ServiceHistory = ({ params }) => {
     const [loading, setLoading] = useState(true);
     async function getService() {
         try {
-            const token = await axios.get("/api/users/token");
+            const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
             const user_id = token.data.decodedToken.id;
-            const user = await axios.get("/api/users/" + user_id);
+            const user = await axios.get("/api/users/" + user_id); // getting the details of the logged in user
             const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233', {
                 connectionTimeout: 10000,
                 requestTimeout: 60000,

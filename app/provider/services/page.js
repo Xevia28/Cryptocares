@@ -1,10 +1,12 @@
+// Create Service Page for Providers
+
 "use client"
-import Nav from "@/components/provNav";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+// customized options to style the toast
 const toastOption = {
   position: "top-right",
   autoClose: 8000,
@@ -34,7 +36,7 @@ const Services = () => {
   const [ipfsIMGLoading, setIpfsIMGLoading] = useState(false);
 
   async function handleUserDetails() {
-    const token = await axios.get("/api/users/token");
+    const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
     const user_id = token.data.decodedToken.id;
     setUserID(user_id)
   }
@@ -43,7 +45,7 @@ const Services = () => {
     handleUserDetails();
   }, [])
 
-  async function handleUpload(file) {
+  async function handleUpload(file) { // handling the file upload to generate ipfs path
     return new Promise((resolve, reject) => {
       try {
         const formData = new FormData();

@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 
-const montserrat = Montserrat({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] }); // We'll use the Montserrat font for this project
 
 export const metadata = {
   title: "CryptoCares",

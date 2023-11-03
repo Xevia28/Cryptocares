@@ -1,3 +1,5 @@
+// Side Navigation of Admins Pages
+
 "use client"
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +9,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+// customized options to style the toast
 const toastOption = {
     position: "top-right",
     autoClose: 8000,
@@ -39,7 +42,7 @@ const SideNav = () => {
 
     async function handleUserDetails() {
         try {
-            const token = await axios.get("/api/users/token");
+            const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
             const user_id = token.data.decodedToken.id;
             console.log(user_id)
         } catch (err) {

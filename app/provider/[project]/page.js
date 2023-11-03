@@ -1,3 +1,5 @@
+// This page shows the details of the projects in the system for the providers
+
 "use client"
 import axios from "axios";
 import Image from "next/image";

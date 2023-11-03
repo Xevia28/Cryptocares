@@ -1,3 +1,5 @@
+// This page shows the details of the project that the donor selects and the donor can donate XRP from this page
+
 "use client"
 import axios from "axios";
 import Image from "next/image";

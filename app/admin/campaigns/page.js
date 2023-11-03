@@ -1,3 +1,5 @@
+// This page displays all the project and service creation requests.
+
 "use client"
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";

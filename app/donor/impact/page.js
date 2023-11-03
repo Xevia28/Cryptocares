@@ -1,3 +1,5 @@
+// This Page displays all the donations made by the donor that is logged in
+
 "use client"
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -7,7 +9,7 @@ const Impact = () => {
   const router = useRouter();
   const [donations, setDonations] = useState("")
   async function handleImpactDetails() {
-    const token = await axios.get("/api/users/token");
+    const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
     const user_id = token.data.decodedToken.id;
     const user = await axios.get(`/api/users/${user_id}`)
     const donationRes = await axios.get("/api/donations");

@@ -1,3 +1,5 @@
+// This page shows the details of the request made by a beneficiary for a specific service and the provider can approve or decline the requests in this page
+
 "use client"
 import axios from "axios";
 import Image from "next/image";
@@ -7,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 const xrpl = require("xrpl");
 
+// customized options to style the toast
 const toastOption = {
     position: "top-right",
     autoClose: 8000,

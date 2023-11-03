@@ -1,3 +1,5 @@
+// Explore Page for non-users
+
 "use client"
 import Header from "@/components/indexNav";
 import Image from "next/image";
@@ -6,7 +8,6 @@ import getProjects from "@/libs/getProjects";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/footer";
-// import ProjectContainer from "@/components/projectsContainer";
 import { Suspense } from "react";
 
 const Explore = () => {

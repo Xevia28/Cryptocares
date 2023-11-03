@@ -1,3 +1,5 @@
+// This page displays all the projects that the beneficiary has created
+
 "use client"
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -6,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+// customized options to style the toast
 const toastOption = {
   position: "top-right",
   autoClose: 8000,
@@ -26,9 +29,9 @@ const Project = () => {
 
   async function handleGetProjects() {
     try {
-      const token = await axios.get("/api/users/token");
+      const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
       const user_id = token.data.decodedToken.id;
-      const user = await axios.get("/api/users/" + user_id);
+      const user = await axios.get("/api/users/" + user_id); // getting the details of the logged in user
       let projects = []
       await Promise.all(
         user.data.user.projects.map(async (project) => {

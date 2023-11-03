@@ -1,3 +1,5 @@
+// This page shows the details of the project selected in the explore page
+
 "use client"
 import axios from "axios";
 import Image from "next/image";

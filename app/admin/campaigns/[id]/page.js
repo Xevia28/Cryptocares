@@ -1,3 +1,5 @@
+// This is where the admin reviews over the details and proof of projects and services, and decide whether or not to confirm the creation request.
+
 "use client"
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -6,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/navigation";
 
+// customized options to style the toast
 const toastOption = {
     position: "top-right",
     autoClose: 8000,

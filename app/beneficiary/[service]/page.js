@@ -1,3 +1,5 @@
+// This page shows the details of the service selected in the home page
+
 "use client"
 import Image from "next/image";
 import axios from "axios";
@@ -7,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const xrpl = require("xrpl");
 const cc = require("five-bells-condition");
 
+// customized options to style the toast
 const toastOption = {
     position: "top-right",
     autoClose: 8000,
@@ -34,9 +37,9 @@ const ProjectPage = ({ params }) => {
 
     async function handleUserDetails() {
         try {
-            const token = await axios.get("/api/users/token");
+            const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
             const user_id = token.data.decodedToken.id;
-            const user = await axios.get("/api/users/" + user_id);
+            const user = await axios.get("/api/users/" + user_id); // getting the details of the logged in user
             const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233', {
                 connectionTimeout: 10000,
                 requestTimeout: 60000,

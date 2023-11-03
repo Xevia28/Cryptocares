@@ -1,3 +1,4 @@
+// Project Schema : This will be used to store the details of project created on the platform
 const mongoose = require("mongoose")
 
 const projectSchema = new mongoose.Schema({

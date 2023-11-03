@@ -1,8 +1,11 @@
+// Provider Home Page
+
 "use client"
 import Image from "next/image";
 import { useEffect, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+
 const getProjects = async () => {
   try {
     const res = await fetch("http://localhost:3000/api/projects", { cache: "no-store" });
@@ -21,6 +24,7 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [prjLoading, setPrjLoading] = useState(true);
+
   async function fetchProjects() {
     try {
       const allprjs = await getProjects();

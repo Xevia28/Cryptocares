@@ -1,9 +1,12 @@
+// This is the modal component that opens when a donor decides to donate to a project
+
 "use client"
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+// customized options to style the toast
 const toastOption = {
     position: "top-right",
     autoClose: 8000,
@@ -24,9 +27,9 @@ const Modal = ({ data, onClose }) => {
     const [seed, setSeed] = useState("");
 
     async function handleUserDetails() {
-        const token = await axios.get("/api/users/token");
+        const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
         const user_id = token.data.decodedToken.id;
-        const user = await axios.get("/api/users/" + user_id);
+        const user = await axios.get("/api/users/" + user_id); // getting the details of the logged in user
         setUser(user.data.user);
         // setUser(user.data.user);
     }
@@ -71,7 +74,7 @@ const Modal = ({ data, onClose }) => {
             const tx = await client.submitAndWait(signed.tx_blob);
             console.log(tx.result.hash);
             console.log(tx)
-            if (tx.result.meta.TransactionResult === "tesSUCCESS") {
+            if (tx.result.meta.TransactionResult === "tesSUCCESS") { // if the xrpl transaction was successful
                 try {
                     const txRes = await axios.post("http://localhost:3000/api/transactions", {
                         transaction_hash: tx.result.hash, amount: amount, from: wallet.address, to: destination

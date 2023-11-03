@@ -1,3 +1,4 @@
+// User Schema : This will be used to store the details of the users.
 const mongoose = require("mongoose")
 const bcrypt = require("bcryptjs")
 const validator = require("validator")

@@ -1,3 +1,5 @@
+// Login Page
+
 "use client"
 import { useState } from "react";
 import Header from "@/components/indexNav";
@@ -74,6 +76,7 @@ const Login = () => {
     }
   }
 
+  // customized options to style the toast
   const toastOption = {
     position: "top-right",
     autoClose: 8000,

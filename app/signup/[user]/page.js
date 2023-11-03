@@ -1,3 +1,5 @@
+// Signup page for beneficiaries and providers
+
 "use client"
 import Header from "@/components/indexNav";
 import Image from "next/image";
@@ -9,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+// customized options to style the toast
 const toastOption = {
     position: "top-right",
     autoClose: 8000,
@@ -21,7 +24,6 @@ const toastOption = {
     pauseOnHover: true,
     theme: "colored"
 };
-
 
 export default function Page({ params }) {
     const query = { params }
@@ -86,7 +88,7 @@ export default function Page({ params }) {
         );
     }
 
-    async function handleUpload(file) {
+    async function handleUpload(file) { // handling the file upload to generate ipfs path
         return new Promise((resolve, reject) => {
             try {
                 const formData = new FormData();

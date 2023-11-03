@@ -1,3 +1,6 @@
+// This is the page where the beneficiary creates a new project. The beneficiary can only create one project at a time.
+// so the beneficiary can create a project when they don't have any projects or when their last created project is completed.
+
 "use client"
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -7,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const xrpl = require("xrpl")
 
+// customized options to style the toast
 const toastOption = {
   position: "top-right",
   autoClose: 8000,
@@ -43,16 +47,16 @@ const Create = () => {
   };
 
   async function handleUserDetails() {
-    const token = await axios.get("/api/users/token");
+    const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
     const user_id = token.data.decodedToken.id;
     setUserID(user_id);
-    const user = await axios.get("/api/users/" + user_id);
-    if (user.data.user.projects.length === 0) {
+    const user = await axios.get("/api/users/" + user_id); // getting the details of the logged in user
+    if (user.data.user.projects.length === 0) { //checking if user can create project
       setHasProject("false")
       return;
     }
     const project = await axios.get(`/api/projects/${user.data.user.projects[user.data.user.projects.length - 1]}`)
-    if (project.data.project.status === "completed") {
+    if (project.data.project.status === "completed") { //checking if user can create project
       setHasProject("false");
       return;
     }
@@ -63,7 +67,7 @@ const Create = () => {
     handleUserDetails();
   }, [])
 
-  async function handleUpload(file) {
+  async function handleUpload(file) { // handling the file upload to generate ipfs path
     return new Promise((resolve, reject) => {
       try {
         const formData = new FormData();

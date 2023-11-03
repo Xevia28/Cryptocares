@@ -1,3 +1,4 @@
+// Proof Schema : This will be used to store the image of the proof of eligibility
 const mongoose = require("mongoose")
 
 const proof_of_need = new mongoose.Schema({

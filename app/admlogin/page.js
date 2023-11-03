@@ -1,8 +1,7 @@
+// Admin Login Page
+
 "use client"
 import { useState } from "react";
-import Header from "@/components/indexNav";
-import Image from "next/image";
-import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
@@ -70,6 +69,7 @@ const Login = () => {
         }
     }
 
+    // customized options to style the toast
     const toastOption = {
         position: "top-right",
         autoClose: 8000,

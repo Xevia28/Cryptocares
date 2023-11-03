@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* LOADER CSS CODE */
 .loader {
   height: 100px;
   width: 100px;

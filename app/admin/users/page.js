@@ -1,3 +1,6 @@
+// This page displays all the users (donor, beneficiaries, providers) with the option the activate or deactivate their accounts
+// A mail is sent to the user upon either action (activate or deactivate)
+
 "use client"
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -5,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+// customized options to style the toast
 const toastOption = {
     position: "top-right",
     autoClose: 8000,

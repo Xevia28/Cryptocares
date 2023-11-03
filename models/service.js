@@ -1,3 +1,4 @@
+// Service Schema : This will be used to store the details of services created by the providers
 const mongoose = require("mongoose")
 
 const serviceSchema = new mongoose.Schema({

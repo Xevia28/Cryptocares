@@ -1,3 +1,5 @@
+// Beneficiary Navbar
+
 "use client"
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import Loading from "@/app/loading";
 
+// customized options to style the toast
 const toastOption = {
   position: "top-right",
   autoClose: 8000,
@@ -27,6 +30,7 @@ const Nav = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
+  // Menu dropdown code
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
@@ -37,9 +41,9 @@ const Nav = () => {
 
   async function handleUserDetails() {
     try {
-      const token = await axios.get("/api/users/token");
+      const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
       const user_id = token.data.decodedToken.id;
-      const user = await axios.get("/api/users/" + user_id);
+      const user = await axios.get("/api/users/" + user_id); // getting the details of the logged in user
       // console.log(user.data.user);
       setUser(user.data.user);
     } catch (err) {
@@ -63,6 +67,7 @@ const Nav = () => {
     handleUserDetails();
   }, [])
 
+  // Menu dropdown code
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {

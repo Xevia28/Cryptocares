@@ -1,3 +1,4 @@
+// Escrow Schema : This will be used to store the details of the escrows created
 const mongoose = require("mongoose")
 
 const escrowSchema = new mongoose.Schema({

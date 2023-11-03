@@ -1,3 +1,4 @@
+// Donation Schema : This will be used to store the details of donations
 const mongoose = require("mongoose")
 
 const donationSchema = new mongoose.Schema({

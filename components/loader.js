@@ -1,4 +1,4 @@
-import { HashLoader } from "react-spinners";
+// Custom Loader
 
 const Loader = () => {
     return (

@@ -1,3 +1,4 @@
+// Request Schema : This will be used to store the details of requests created by the beneficiaries.
 const mongoose = require("mongoose")
 
 const requestSchema = new mongoose.Schema({

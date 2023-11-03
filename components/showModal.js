@@ -1,3 +1,5 @@
+// This is the modal that shows when a beneficiary creates a project. A wallet will be created for the project and the wallet credentials will be displayed on this modal
+
 const Modal = ({ data, onClose }) => {
     return (
         <div className="fixed top-0 left-0 w-full h-screen z-10 bg-bgDark flex justify-center items-center">

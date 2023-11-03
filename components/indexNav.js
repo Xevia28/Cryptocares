@@ -1,3 +1,5 @@
+// This is the Navbar for the non-users
+
 import Image from "next/image";
 import Link from "next/link";
 const Nav = () => {

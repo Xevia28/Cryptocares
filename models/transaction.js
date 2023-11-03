@@ -1,3 +1,4 @@
+// This will be used to store the details of all the XRPL transactions. 
 const mongoose = require("mongoose")
 
 const transactionsSchema = new mongoose.Schema({

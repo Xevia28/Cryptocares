@@ -1,3 +1,5 @@
+// This page displays all the requests made to the providers by the beneficiary
+
 "use client"
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -11,9 +13,9 @@ const ServicesRequested = () => {
 
     async function handleRequestsDetails() {
         try {
-            const token = await axios.get("/api/users/token");
+            const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
             const user_id = token.data.decodedToken.id;
-            const user = await axios.get("/api/users/" + user_id);
+            const user = await axios.get("/api/users/" + user_id); // getting the details of the logged in user
             if (user.data.user.projects.length === 0) {
                 setHasProject("false")
                 return;

@@ -1,3 +1,5 @@
+// Profile Page
+
 "use client"
 import { useState, useEffect } from "react";
 const xrpl = require("xrpl");
@@ -7,6 +9,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+// customized options to style the toast
 const toastOption = {
   position: "top-right",
   autoClose: 8000,
@@ -168,9 +171,9 @@ const Profile = () => {
         connectionTimeout: 10000,
         requestTimeout: 60000,
       });
-      const token = await axios.get("/api/users/token");
+      const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
       const user_id = token.data.decodedToken.id;
-      const user = await axios.get("/api/users/" + user_id);
+      const user = await axios.get("/api/users/" + user_id); // getting the details of the logged in user
       await client.connect();
       setUserData(user.data.user)
       const walletBalance = await client.getXrpBalance(user.data.user.wallet_addr)
@@ -198,7 +201,7 @@ const Profile = () => {
             </div>
             <div>
               <div className="mt-6">
-                <h5 className="text-sm font-medium text-gray-400">Current Project Funds</h5>
+                <h5 className="text-sm font-medium text-gray-400">My Funds</h5>
                 <h1 className="text-xl font-semibold mb-6">{balance} XRP</h1>
                 <hr className="border-t-neutral-400"></hr>
               </div>

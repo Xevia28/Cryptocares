@@ -1,3 +1,6 @@
+// This page is to view the proof of eligibility of beneficiaries and provider. The admin will review the proof and decide whether or not
+// to approve the user to use the platform
+
 "use client"
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -6,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+// customized options to style the toast
 const toastOption = {
     position: "top-right",
     autoClose: 8000,

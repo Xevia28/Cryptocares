@@ -1,3 +1,5 @@
+// This page shows all the requests made to the provider by the beneficiaries for their services
+
 "use client"
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -6,11 +8,10 @@ import { useState, useEffect } from "react";
 const ServiceRequests = () => {
     const router = useRouter();
     const [requests, setRequests] = useState("")
-    const [project, setProject] = useState("")
 
     async function handleRequestsDetails() {
         try {
-            const token = await axios.get("/api/users/token");
+            const token = await axios.get("/api/users/token"); // getting the decoded token details from the cookies
             const user_id = token.data.decodedToken.id;
             const user = await axios.get("/api/users/" + user_id);
             const provServices = user.data.user.services;
@@ -32,6 +33,7 @@ const ServiceRequests = () => {
     useEffect(() => {
         handleRequestsDetails();
     }, [])
+
     return (
         <>
             <div className="min-h-screen mx-36 py-10">
@@ -59,7 +61,7 @@ const ServiceRequests = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {requests && (requests.length === 0 ? <tr><td className="pt-5 text-2xl">You have not made any requests</td></tr> : Promise.all(
+                                {requests && (requests.length === 0 ? <tr><td className="pt-5 text-2xl">You do not have any service requests</td></tr> : Promise.all(
                                     requests.map(async (request, key) => {
                                         const service = await axios.get(`/api/services/${request.service}`);
                                         const project = await axios.get(`/api/projects/${request.project}`);

@@ -1,3 +1,5 @@
+// Non-user index page
+
 import Link from "next/link";
 import Navigation from "@/components/indexNav";
 import Footer from "@/components/footer";
